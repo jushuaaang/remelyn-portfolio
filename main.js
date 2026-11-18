@@ -291,9 +291,9 @@
     scrollTrigger: { trigger: ".clay", start: "top 80%", end: "center 55%", scrub: true },
   });
   mm.add("(min-width: 901px)", () => {
-    gsap.fromTo(".clay__pixar", { rotate: 8, y: 80 }, {
-      rotate: -3, y: 0, ease: "none",
-      scrollTrigger: { trigger: ".clay__extra", start: "top bottom", end: "center 55%", scrub: true },
+    gsap.fromTo(".clay__card .phone", { rotate: (i) => (i ? 10 : -10), y: (i) => (i ? 120 : 60) }, {
+      rotate: (i) => (i ? 3 : -3), y: 0, ease: "none",
+      scrollTrigger: { trigger: ".clay__pair", start: "top bottom", end: "center 55%", scrub: true },
     });
   });
   gsap.to(".clay__marks svg", { rotate: 180, ease: "none", stagger: 0.1, scrollTrigger: { trigger: ".clay", start: "top bottom", end: "bottom top", scrub: true } });
