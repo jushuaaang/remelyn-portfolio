@@ -324,7 +324,7 @@ html { overflow-x: clip; }
 .clay__top { display: flex; justify-content: space-between; align-items: center; }
 .clay__marks { display: flex; gap: 10px; }
 .clay__marks svg { width: 28px; height: 28px; fill: var(--ink); }
-.clay__word { margin: 30px 0; font-size: clamp(40px, 10.5vw, 176px); line-height: .9; display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; }
+.clay__word { margin: 30px 0; font-size: clamp(26px, 7.4vw, 128px); line-height: .9; display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; }
 .clay__o {
   width: .82em; aspect-ratio: 1; border-radius: 50%; margin: 0 .02em; border: .07em solid var(--ink);
   box-shadow: 0 0 0 0 var(--orange);
@@ -353,7 +353,6 @@ html { overflow-x: clip; }
 }
 @media (max-width: 900px) {
   .clay__inner { min-height: 0; padding-block: 60px; }
-  .clay__word { font-size: 11.6vw; }
   .monitor__screen { margin: 8px; }
 }
 .clay__copy { margin: 0 auto; max-width: 40ch; text-align: center; font-size: clamp(16px, 1.4vw, 20px); font-weight: 600; }

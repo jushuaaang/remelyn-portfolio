@@ -284,11 +284,12 @@
     scrollTrigger: { trigger: ".strip", start: "top 85%" },
   });
 
-  /* 6. Claymation: the "O" swells into the clip */
-  const clayO = $(".clay__o");
-  gsap.fromTo(clayO, { scale: 0.6, rotate: -20 }, {
-    scale: 1, rotate: 0, ease: "none",
-    scrollTrigger: { trigger: ".clay", start: "top 80%", end: "center 55%", scrub: true },
+  /* 6. Claymation: heading drops in, the two clips swing into place */
+  const clayWord = $(".clay__word");
+  gsap.set(clayWord, { overflow: "hidden", paddingBottom: "0.04em" });
+  gsap.from($$(".ch", clayWord), {
+    yPercent: 115, duration: 1, ease: "expo.out", stagger: 0.03,
+    scrollTrigger: { trigger: clayWord, start: "top 85%" },
   });
   mm.add("(min-width: 901px)", () => {
     gsap.fromTo(".clay__card .phone", { rotate: (i) => (i ? 10 : -10), y: (i) => (i ? 120 : 60) }, {
