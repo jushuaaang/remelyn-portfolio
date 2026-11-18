@@ -73,15 +73,15 @@
   /* ── Viewer ── */
   const viewer = $(".viewer"), vv = $(".viewer__video");
   let lastFocus = null;
-  const openViewer = (src) => {
-    lastFocus = document.activeElement; vv.src = src; viewer.hidden = false;
+  const openViewer = (src, audio) => {
+    lastFocus = document.activeElement; vv.src = src; vv.muted = !audio; viewer.hidden = false;
     vv.play().catch(() => {}); $(".viewer__close").focus(); lenis && lenis.stop();
   };
   const closeViewer = () => {
     vv.pause(); vv.removeAttribute("src"); vv.load(); viewer.hidden = true;
     lenis && lenis.start(); lastFocus && lastFocus.focus();
   };
-  document.addEventListener("click", (e) => { const p = e.target.closest(".phone"); if (p) openViewer(p.dataset.src); });
+  document.addEventListener("click", (e) => { const p = e.target.closest(".phone"); if (p) openViewer(p.dataset.src, "audio" in p.dataset); });
   $(".viewer__close").addEventListener("click", closeViewer);
   viewer.addEventListener("click", (e) => { if (e.target === viewer) closeViewer(); });
   addEventListener("keydown", (e) => { if (e.key === "Escape" && !viewer.hidden) closeViewer(); });
@@ -291,9 +291,9 @@
     scrollTrigger: { trigger: ".clay", start: "top 80%", end: "center 55%", scrub: true },
   });
   mm.add("(min-width: 901px)", () => {
-    gsap.to(clayO, {
-      scale: 2.4, ease: "power1.in",
-      scrollTrigger: { trigger: ".clay", start: "center 45%", end: "bottom 30%", scrub: true },
+    gsap.fromTo(".clay__pixar", { rotate: 8, y: 80 }, {
+      rotate: -3, y: 0, ease: "none",
+      scrollTrigger: { trigger: ".clay__extra", start: "top bottom", end: "center 55%", scrub: true },
     });
   });
   gsap.to(".clay__marks svg", { rotate: 180, ease: "none", stagger: 0.1, scrollTrigger: { trigger: ".clay", start: "top bottom", end: "bottom top", scrub: true } });
